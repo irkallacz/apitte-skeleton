@@ -10,16 +10,16 @@ final class Address extends BasicEntity
 
 	/**
 	 * @var string
-	 * 
+	 *
 	 * @Assert\NotBlank
 	 */
 	public $city;
 
 	/**
 	 * @var string
-	 * 
+	 *
 	 * @Assert\NotBlank
 	 */
-	public $street = [];
+	public $street;
 
 }

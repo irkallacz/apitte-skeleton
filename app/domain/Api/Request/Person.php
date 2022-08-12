@@ -5,7 +5,7 @@ namespace App\Domain\Api\Request;
 use Symfony\Component\Validator\Constraints as Assert;
 use Apitte\Core\Mapping\Request\BasicEntity;
 
-final class User extends BasicEntity
+final class Person extends BasicEntity
 {
 
     /**
@@ -14,16 +14,16 @@ final class User extends BasicEntity
      * @Assert\NotBlank
      */
     public $name;
-    
+
     /**
      * @var string
-     * 
+     *
      * @Assert\NotBlank
      */
-    public $surname
+    public $surname;
 
 	/**
-	 * @var Composition
+	 * @var Address
 	 * @Assert\NotBlank
 	 * @Assert\Valid
 	 * @Assert\Type("App\Domain\Api\Request\Address")

@@ -3,12 +3,12 @@
 namespace App\Module\PubV1;
 
 use Apitte\Core\Annotation\Controller\Method;
-use Apitte\Core\Annotation\Controller\OpenApi;
 use Apitte\Core\Annotation\Controller\Path;
-use Apitte\Core\Annotation\Controller\Tag;
+use Apitte\Core\Annotation\Controller\RequestBody;
 use Apitte\Core\Http\ApiRequest;
 use Apitte\Core\Http\ApiResponse;
-use Apitte\OpenApi\ISchemaBuilder;
+use App\Domain\Api\Request\Person;
+use Nette\Http\IResponse;
 use Psr\Http\Message\ResponseInterface;
 
 /**
@@ -20,16 +20,15 @@ class UserController extends BasePubV1Controller
 	/**
 	 * @Path("/create")
 	 * @Method("POST")
-	 * @RequestBody(entity="App\Api\Entity\Request\User")
+	 * @RequestBody(entity="App\Domain\Api\Request\Person")
 	 */
 	public function create(ApiRequest $request, ApiResponse $response): ResponseInterface
 	{
-		/** @var User $entity */
+		/** @var Person $entity */
 		$entity = $request->getEntity();
 
 		return $response->withStatus(IResponse::S201_CREATED)
-				->withHeader('Content-Type', 'application/json')
-				->writeJsonBody($entity);
+				->writeJsonBody((array) $entity);
 	}
 
 }
